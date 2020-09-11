@@ -1,6 +1,9 @@
 package progress
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Progress struct {
 	percent int
@@ -31,12 +34,8 @@ func (p *Progress) Add(i int) {
 		return
 	}
 
-	last := p.percent
 	p.percent = p.GetPercent()
-
-	if p.percent != last && p.percent%2 == 0 {
-		p.rate += p.graph
-	}
+	p.rate = strings.Repeat(p.graph, p.percent/2)
 
 	fmt.Printf("\r[%-50s]%4d%% %8d/%d", p.rate, p.percent, p.current, p.total)
 
