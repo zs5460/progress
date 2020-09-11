@@ -28,6 +28,9 @@ func (p *Progress) GetPercent() int {
 
 func (p *Progress) Incr() {
 	p.current++
+	if p.current > p.total {
+		return
+	}
 	p.percent = p.GetPercent()
 	p.rate = strings.Repeat(p.graph, p.percent/2)
 	fmt.Printf("\r[%-50s]%4d%% %8d/%d", p.rate, p.percent, p.current, p.total)

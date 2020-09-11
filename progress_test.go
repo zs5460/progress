@@ -18,7 +18,7 @@ func TestRun(t *testing.T) {
 	bar = New(count)
 	bar.SetGraph("▫")
 
-	for i := 0; i < count; i++ {
+	for i := 0; i <= count; i++ {
 		time.Sleep(1 * time.Millisecond)
 		bar.Incr()
 	}
